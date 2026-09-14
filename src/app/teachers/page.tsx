@@ -33,7 +33,7 @@ const fallbackTeacher: Teacher = {
   price_per_hour: 30,
   lessons_done: 1098,
   avatar_url: "",
-  lessonInfo: "Lessons are structured to cover grammar, vocabulary, and practical usage of the language.",
+  lesson_info: "Lessons are structured to cover grammar, vocabulary, and practical usage of the language.",
   conditions: ["Welcomes both adult learners and teenagers (13 years and above).", "Provides personalized study plans."],
   experience: "",
 };
