@@ -1,0 +1,39 @@
+:root {
+  --color-primary: #f4c550;
+  --color-primary-light: #fbe9ba;
+  --color-green: #9fbaae;
+  --color-green-light: #cbded3;
+  --color-blue: #9fb7ce;
+  --color-blue-light: #bfd6ea;
+  --color-pink: #e0a39a;
+  --color-pink-light: #f2c0bd;
+  --color-peach: #f0aa8d;
+  --color-peach-light: #f4c8ba;
+  --color-text: #121417;
+  --color-white: #fff;
+
+  --font-family: "Roboto", Arial, Helvetica, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+
+.container,
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 0 128px;
+}

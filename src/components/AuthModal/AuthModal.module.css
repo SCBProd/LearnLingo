@@ -1,0 +1,54 @@
+.backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgb(18 20 23 / 55%);
+}
+
+.modal {
+  position: relative;
+  width: min(100%, 438px);
+  padding: 48px 64px;
+  border-radius: 30px;
+  background: var(--color-white);
+}
+
+.modal h2 { margin: 0 0 20px; font-size: 40px; line-height: 1.2; letter-spacing: -0.02em; }
+.modal > p { margin: 0; color: #5f6062; line-height: 1.5; }
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.form { display: grid; gap: 18px; margin-top: 28px; }
+.form label { display: grid; gap: 8px; font-size: 14px; font-weight: var(--font-weight-medium); }
+.form input { width: 100%; min-height: 54px; padding: 0 18px; border: 1px solid rgb(18 20 23 / 20%); border-radius: 12px; color: var(--color-text); font: inherit; }
+.form input:focus { border-color: var(--color-primary); outline: 2px solid rgb(244 197 80 / 30%); }
+
+.submitButton { min-height: 54px; margin-top: 6px; border: 0; border-radius: 12px; background: var(--color-primary); color: var(--color-text); cursor: pointer; font: inherit; font-weight: var(--font-weight-bold); }
+.submitButton:hover { background: #eabe4c; }
+.submitButton:disabled { cursor: wait; opacity: 0.7; }
+.error { margin: -4px 0 0; color: #c33; font-size: 14px; line-height: 1.4; }
+
+.switchText { margin-top: 20px !important; text-align: center; font-size: 14px; }
+.switchText button { padding: 0; border: 0; background: transparent; color: var(--color-text); cursor: pointer; font: inherit; font-weight: var(--font-weight-bold); text-decoration: underline; }
+
+.closeButton:focus-visible, .submitButton:focus-visible, .switchText button:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+
+@media (max-width: 500px) {
+  .modal { padding: 44px 24px 32px; border-radius: 20px; }
+  .modal h2 { font-size: 32px; }
+}
