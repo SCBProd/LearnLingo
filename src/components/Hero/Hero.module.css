@@ -32,6 +32,7 @@
 
 .contentCard h1 span {
   color: var(--theme-color);
+  background-color: var(--theme-light);
   font-style: italic;
 }
 
