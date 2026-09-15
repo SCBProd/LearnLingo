@@ -1,17 +1,19 @@
 "use client";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Modal } from "@/components/Modal/Modal";
+import { BookingForm } from "@/components/BookingForm/BookingForm";
 import { TeacherFilters, type TeacherFiltersValue } from "@/components/TeacherFilters/TeacherFilters";
 import { TeacherList } from "@/components/TeacherList/TeacherList";
 import { LANGUAGE_OPTIONS, LEVEL_OPTIONS } from "@/constants/filters";
 import { useAuth } from "@/hooks/useAuth";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useTeachers } from "@/hooks/useTeachers";
+import type { Teacher } from "@/types/teacher";
 import styles from "./page.module.css";
 
 const initialFilters: TeacherFiltersValue = { language: "all", level: "all", price: "all", sort: "default" };
 export default function TeachersPage() {
-  const [filters, setFilters] = useState(initialFilters); const [showAuthNotice, setShowAuthNotice] = useState(false); const { user } = useAuth(); const { favoriteIds, toggleFavorite } = useFavorites(user?.uid); const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const [filters, setFilters] = useState(initialFilters); const [showAuthNotice, setShowAuthNotice] = useState(false); const [bookingTeacher, setBookingTeacher] = useState<Teacher | null>(null); const { user } = useAuth(); const { favoriteIds, toggleFavorite } = useFavorites(user?.uid); const sentinelRef = useRef<HTMLDivElement | null>(null);
   const queryFilters = useMemo(() => ({ language: filters.language, level: filters.level, price: filters.price, sort: "default" }), [filters.language, filters.level, filters.price]);
   const { teachers, isLoading, error, hasMore, loadMore } = useTeachers(queryFilters);
   const languages = useMemo(() => Array.from(new Set([...LANGUAGE_OPTIONS, ...teachers.flatMap((teacher) => teacher.languages)])).sort(), [teachers]);
@@ -22,10 +24,10 @@ export default function TeachersPage() {
   return <main className={styles.page}><div className={`container ${styles.content}`}>
     <TeacherFilters value={filters} onChange={setFilters} languages={languages} prices={prices} levels={LEVEL_OPTIONS} />
     {error && <div className={styles.message} role="alert">{error} <button type="button" onClick={() => void loadMore()}>Try again</button></div>}
-    <TeacherList teachers={sortedTeachers} favoriteIds={favoriteIds} onFavorite={handleFavorite} />
+    <TeacherList teachers={sortedTeachers} favoriteIds={favoriteIds} onFavorite={handleFavorite} onBook={setBookingTeacher} activeLanguage={filters.language} activeLevel={filters.level} activePrice={filters.price} />
     {isLoading && <p className={styles.status} aria-live="polite">Loading teachers…</p>}
     {!isLoading && !error && teachers.length === 0 && <p className={styles.status}>No teachers match these filters.</p>}
     {!isLoading && !error && teachers.length > 0 && !hasMore && <p className={styles.status}>There are no more teachers to load.</p>}
     <div ref={sentinelRef} className={styles.sentinel} aria-hidden="true" />
-  </div>{showAuthNotice && <Modal title="Sign in to add favourites" onClose={() => setShowAuthNotice(false)}><p>Adding teachers to favourites is available only for authorised users.</p></Modal>}</main>;
+  </div>{showAuthNotice && <Modal title="Sign in to add favourites" onClose={() => setShowAuthNotice(false)}><p>Adding teachers to favourites is available only for authorised users.</p></Modal>}{bookingTeacher && <BookingForm teacher={bookingTeacher} onClose={() => setBookingTeacher(null)} />}</main>;
 }

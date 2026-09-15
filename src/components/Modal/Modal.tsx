@@ -4,9 +4,9 @@ import { useEffect, type ReactNode } from "react";
 
 import styles from "./Modal.module.css";
 
-type ModalProps = { title: string; children: ReactNode; onClose: () => void };
+type ModalProps = { title: string; children: ReactNode; onClose: () => void; className?: string };
 
-export function Modal({ title, children, onClose }: ModalProps) {
+export function Modal({ title, children, onClose, className }: ModalProps) {
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => event.key === "Escape" && onClose();
     document.addEventListener("keydown", closeOnEscape);
@@ -14,7 +14,7 @@ export function Modal({ title, children, onClose }: ModalProps) {
   }, [onClose]);
 
   return <div className={styles.backdrop} role="presentation" onMouseDown={(event) => event.currentTarget === event.target && onClose()}>
-    <section className={styles.modal} role="dialog" aria-modal="true" aria-label={title}>
+    <section className={`${styles.modal} ${className ?? ""}`} role="dialog" aria-modal="true" aria-label={title}>
       <button className={styles.close} type="button" onClick={onClose} aria-label="Close">×</button>
       <h2>{title}</h2>
       {children}
