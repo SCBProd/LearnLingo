@@ -31,8 +31,8 @@
 }
 
 .contentCard h1 span {
-  color: var(--theme-light);
-  background-color: var(--theme-color);
+  color: var(--font-weight-regular);
+  background-color: var(--theme-light);
   font-style: italic;
     border-radius: 8px;
 }
