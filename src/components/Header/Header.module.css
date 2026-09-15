@@ -46,8 +46,45 @@
   gap: 16px;
 }
 
+.userActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.avatar {
+  display: grid;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 50%;
+  background: #f4c550;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+}
+
+.userName {
+  max-width: 150px;
+  overflow: hidden;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .loginButton,
-.registrationButton {
+.registrationButton,
+.logoutButton {
   border: 0;
   cursor: pointer;
   font: inherit;
@@ -82,6 +119,15 @@
   color: var(--color-white);
 }
 
+.logoutButton {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid #d8d8d8;
+  border-radius: 12px;
+  background: var(--color-white);
+  color: var(--color-text);
+}
+
 .loginButton:hover {
   color: var(--color-primary);
 }
@@ -90,8 +136,19 @@
   background: #2f3032;
 }
 
+.logoutButton:hover:not(:disabled) {
+  border-color: var(--color-text);
+  background: #f8f8f8;
+}
+
+.logoutButton:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
 .loginButton:focus-visible,
 .registrationButton:focus-visible,
+.logoutButton:focus-visible,
 .navigation a:focus-visible,
 .logo:focus-visible {
   outline: 2px solid var(--color-primary);
@@ -106,10 +163,26 @@
   .authActions {
     margin-left: auto;
   }
+
+  .userActions {
+    margin-left: auto;
+  }
 }
 
 @media (max-width: 560px) {
   .registrationButton {
     padding-inline: 14px;
+  }
+
+  .userActions {
+    gap: 10px;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .logoutButton {
+    padding-inline: 12px;
   }
 }

@@ -1,0 +1,5 @@
+.backdrop { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 20px; background: rgb(18 20 23 / 45%); }
+.modal { position: relative; width: min(100%, 400px); padding: 40px; border-radius: 24px; background: var(--color-white); }
+.modal h2 { margin: 0 0 14px; font-size: 28px; }
+.modal p { margin: 0; color: #5f6062; line-height: 1.5; }
+.close { position: absolute; top: 14px; right: 18px; border: 0; background: none; color: var(--color-text); cursor: pointer; font-size: 28px; line-height: 1; }
