@@ -31,10 +31,10 @@
 }
 
 .contentCard h1 span {
-  color: var(--theme-color);
-  background-color: var(--theme-light);
+  color: var(--theme-light);
+  background-color: var(--theme-color);
   font-style: italic;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 .contentCard h2 {
