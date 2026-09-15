@@ -39,3 +39,11 @@ export async function getTeachers({ cursor = null, limit = 4 }: GetTeachersOptio
     nextCursor: page.length === limit ? page.at(-1)?.id ?? null : null,
   };
 }
+
+/** Reads only teachers the user has already added to favourites. */
+export async function getTeachersByIds(ids: string[]): Promise<Teacher[]> {
+  const snapshots = await Promise.all(ids.map((id) => get(ref(db, `teachers/${id}`))));
+  return snapshots.flatMap((snapshot, index) => snapshot.exists()
+    ? [{ id: ids[index], ...(snapshot.val() as Omit<Teacher, "id">) }]
+    : []);
+}

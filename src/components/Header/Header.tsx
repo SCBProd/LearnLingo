@@ -48,6 +48,7 @@ export function Header() {
           <nav className={styles.navigation} aria-label="Main navigation">
             <Link href="/">Home</Link>
             <Link href="/teachers">Teachers</Link>
+            {user && <Link href="/favorites">Favorites</Link>}
           </nav>
 
           {!isAuthLoading && (user ? (

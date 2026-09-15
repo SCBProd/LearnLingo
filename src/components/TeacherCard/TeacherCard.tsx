@@ -22,7 +22,7 @@ export function TeacherCard({ teacher, isFavorite, onFavorite, onBook, activeLan
       {isExpanded && <><p><span>Experience:</span> {teacher.experience}</p><div className={styles.reviews}>{teacher.reviews.map((review, index) => <p key={`${review.reviewer_name}-${index}`}><b>{review.reviewer_name}</b> · ★ {review.reviewer_rating}<br />{review.comment}</p>)}</div></>}
       <button className={styles.readMore} type="button" onClick={() => setIsExpanded((current) => !current)}>{isExpanded ? "Show less" : "Read more"}</button>
       {isExpanded && <button className={styles.bookButton} type="button" onClick={onBook}>Book trial lesson</button>}
-      <ul className={styles.tags} aria-label="Teaching levels">{teacher.levels.map((level, index) => <li className={`${index === 0 ? styles.primaryTag : ""} ${activeLevel === level ? styles.selectedTag : ""}`} key={level}>#{level}</li>)}</ul>
+      <ul className={styles.tags} aria-label="Teaching levels">{teacher.levels.map((level) => <li className={activeLevel === level ? styles.selectedTag : undefined} key={level}>#{level}</li>)}</ul>
     </div>
     <div className={styles.statistics}><span>▣ Lessons online</span><span>Lessons done: <b>{teacher.lessons_done}</b></span><span className={styles.rating}>★ Rating: <b>{teacher.rating}</b></span><span className={activePrice === String(teacher.price_per_hour) ? styles.selectedPrice : undefined}>Price / 1 hour: <b>{teacher.price_per_hour} $</b></span></div>
     <button className={`${styles.favoriteButton} ${isFavorite ? styles.isFavorite : ""}`} type="button" aria-label={isFavorite ? "Remove from favourites" : "Add to favourites"} aria-pressed={isFavorite} onClick={onFavorite}>♥</button>

@@ -1,0 +1,1 @@
+.page { min-height: calc(100vh - 89px); padding: 64px 0 96px; background: #f8f8f8; }.content { max-width: 1184px; }.content h1 { margin: 0 0 32px; font-size: 32px; letter-spacing: -.02em; }.status { margin: 28px 0; color: #5f6062; text-align: center; }@media (max-width: 720px) { .page { padding-top: 32px; } }
