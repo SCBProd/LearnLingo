@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -42,9 +42,9 @@ export function Hero() {
             Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency
             to new heights by connecting with highly qualified and experienced tutors.
           </h2>
-          <button className={styles.startButton} type="button">
-            Get started
-          </button>
+          <Link href="/teachers" className={styles.startButton}>
+  Get started
+</Link>
         </div>
 
         <div className={styles.illustration} aria-hidden="true">
