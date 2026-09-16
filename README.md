@@ -88,4 +88,4 @@ src/
 
 ## Нотатка щодо даних
 
-Файл `src/data/teachers.json` можна використати як джерело для початкового наповнення Realtime Database. У production не додавайте `.env.local` до репозиторію.
+Файл `src/data/teachers.json` можна використати як джерело для початкового наповнення Realtime Database.
